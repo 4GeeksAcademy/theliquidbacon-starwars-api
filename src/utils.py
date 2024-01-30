@@ -31,6 +31,15 @@ def generate_sitemap(app):
                 links.append(url)
 
     links_html = "".join(["<li><a href='" + y + "'>" + y + "</a></li>" for y in links])
+    additionals = "".join(["<li>To show one user write  /user/&#60;int:userid&#62;</li>"+
+                           "<li>To show one character write   /people/&#60;int:people_id&#62;</li>"+
+                           "<li>To show one planet write   /planets/&#60;int:planets_id&#62;</li>"+
+                           "<li>To show one user favorite planets write   /user/&#60;int:userid&#62;/planets</li>"+
+                           "<li>Add favorite planet to user with the planet id write   /user/&#60;int:user_id&#62;/planet/&#60;int:planet_id&#62;</li>"+
+                           "<li>Delete favorite planet from user write   /user/&#60;int:userid&#62;/planet/delete=&#60;int:planetid&#62;</li>"+
+                           "<li>To show one user favorite people write   /user/&#60;int:userid&#62;/people</li>"+
+                           "<li>Add favorite people to user with the people id write   /user/&#60;int:user_id&#62;/people/&#60;int:people_id&#62;</li>"+
+                           "<li>Delete favorite people from user write   /user/&#60;int:userid&#62;/people/delete=&#60;int:peopleid&#62;</li>"])
     return """
         <div style="text-align: center;">
         <img style="max-height: 80px" src='https://storage.googleapis.com/breathecode/boilerplates/rigo-baby.jpeg' />
@@ -38,4 +47,4 @@ def generate_sitemap(app):
         <p>API HOST: <script>document.write('<input style="padding: 5px; width: 300px" type="text" value="'+window.location.href+'" />');</script></p>
         <p>Start working on your proyect by following the <a href="https://start.4geeksacademy.com/starters/flask" target="_blank">Quick Start</a></p>
         <p>Remember to specify a real endpoint path like: </p>
-        <ul style="text-align: left;">"""+links_html+"</ul></div>"
+        <ul style="text-align: left;">"""+links_html+"""</ul><h1>Additionals</h1><ul style="text-align: left;">"""+additionals+"</ul></div>"
